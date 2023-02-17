@@ -15,7 +15,7 @@ let formValidation = () => {
         msg.innerHTML = "Post cannot be blank";
         console.log("failure");
     } else {
-        console.log("successs");
+        console.log("success");
         msg.innerHTML = "";
         acceptData();
     }
@@ -29,15 +29,25 @@ let acceptData = () => {
     createPost();
 };
 
-let createPost = () => {
-    posts.innerHTML += `
-  <div>
-    <p>${data.text}</p>
-    <span class="options">
-      <i onClick="editPost(this)" class="fas fa-edit"></i>
-      <i onClick="deletePost(this)" class="fas fa-trash-alt"></i>
-    </span>
-  </div>
-  `;
-    input.value = "";
+
+
+let editPost = (e) => {
+    input.value = e.parentElement.previousElementSibling.innerHTML;
+    e.parentElement.parentElement.remove();
 };
+
+let deletePost = (e) => {
+    e.parentElement.parentElement.remove();
+};
+
+let createPost = () => {
+    posts.innerHTML += `<div>
+<p>${data.text}</p>
+<span class="options">
+<i onclick="editPost(this)" class="fas fa-edit"></i>
+<i onclick="deletePost(this)" class="fas fa-trash-alt"></i>
+</span>
+</div>`;
+    input.value = "";
+}
+
