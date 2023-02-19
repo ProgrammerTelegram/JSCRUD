@@ -23,5 +23,27 @@ let formValidations = () => {
     } else {
         console.log("success");
         msg.innerHTML = "";
+        acceptData();
+        //modal close
+        add.setAttribute("data-bs-dismiss", "modal");
+        add.click();
+        (() => {
+            add.setAttribute("data-bs-dismiss", "");
+        })();
     }
+}
+
+/**
+*local data storage using array
+ */
+let data = [];
+let acceptData = () => {
+    data.push({
+        text: textInput.value,
+        date: dateInput.value,
+        description: textarea.value,
+
+    });
+    localStorage.setItem("data",JSON.stringify(data));
+    console.log(data);
 }
