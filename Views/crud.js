@@ -46,4 +46,26 @@ let acceptData = () => {
     });
     localStorage.setItem("data",JSON.stringify(data));
     console.log(data);
+
+    createTasks();
+}
+
+
+/**
+ *Create new task using template literal to create HTML elements and .map to push the data collected from data array
+ */
+let createTasks = () => {
+    tasks.innerHTML = "";
+    data.map((x, y) => {
+        return (tasks.innerHTML += `
+        <div id=${y}>
+<span class="fw-bold">${x.text}</span>
+<span class="small text-secondary">${x.date}</span>
+<p>${x.description}</p>
+<span class="options">
+<i onclick="editTask(this)" data-bs-toggle="modal" data-bs-target="#form" class="fas fa-edit"></i>
+<i onclick="deleteTask(this);createTasks()" class="fas fa-trash-alt"></i>
+</span>`);
+    });
+    resetForm();
 }
