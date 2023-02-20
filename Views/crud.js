@@ -18,6 +18,11 @@ let formValidation = () => {
         console.log('success');
         msg.innerHTML = "";
         acceptData();
+        add.setAttribute("data-bs-dismiss", "modal");
+        add.click();
+        (() => {
+            add.setAttribute("data-bs-dismiss", "");
+        })();
     }
 };
 
@@ -44,7 +49,13 @@ tasks.innerHTML += `
             </span>
         </div>
 `;
+resetForm();
 };
 
+let resetForm = () => {
+    textInput.value = "";
+    dateInput.value = "";
+    textarea.value = "";
 
+}
 
