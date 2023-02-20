@@ -43,17 +43,19 @@ let acceptData = () => {
 };
 
 let createTasks = () => {
-tasks.innerHTML += `
-  <div>
-            <span class="fw-bold">${data.text}</span>
-            <span class="fw-bold small">${data.date}</span>
-            <p>${data.description}</p>
+    tasks.innerHTML = "";
+    data.map((x,y) => {
+        return (tasks.innerHTML += `<div id=${y}>
+            <span class="fw-bold">${x.text}</span>
+            <span class="fw-bold small">${x.date}</span>
+            <p>${x.description}</p>
             <span class="options">
                 <i onclick="editTask(this)" data-bs-toggle="modal" data-bs-target="#form" class="fas fa-edit"></i>
                 <i onclick="deleteTask(this)" class="fas fa-trash-alt"></i>
             </span>
-        </div>
-`;
+        </div>`);
+    });
+
 resetForm();
 };
 
@@ -79,6 +81,8 @@ let resetForm = () => {
 }
 
 (() => {
-    data = localStorage.getItem("data");
+    data = JSON.parse(localStorage.getItem("data"));
+    createTasks();
+    console.log(data);
 })()
 
