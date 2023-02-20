@@ -36,7 +36,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Add</button>
+                    <button type="submit" id="add" class="btn btn-primary">Add</button>
                 </div>
             </div>
         </div>
@@ -49,16 +49,16 @@
             <p> Going to gym</p>
             <span class="options">
                 <i class="fas fa-edit"></i>
-                <i class="fas fa-trash-alt"></i>
+                <i onclick="deleteTask(this)" class="fas fa-trash-alt"></i>
             </span>
         </div>
         <div>
-            <span class="fw-bold">Task 1</span>
+            <span class="fw-bold">Task 2</span>
             <span class="fw-bold small">2022-1-20</span>
             <p> Going to gym</p>
             <span class="options">
                 <i class="fas fa-edit"></i>
-                <i class="fas fa-trash-alt"></i>
+                <i onclick="deleteTask(this)" class="fas fa-trash-alt"></i>
             </span>
         </div>
     </div>
