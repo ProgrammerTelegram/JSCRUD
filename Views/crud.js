@@ -44,7 +44,7 @@ tasks.innerHTML += `
             <span class="fw-bold small">${data.date}</span>
             <p>${data.description}</p>
             <span class="options">
-                <i class="fas fa-edit"></i>
+                <i onclick="editTask(this)" data-bs-toggle="modal" data-bs-target="#form" class="fas fa-edit"></i>
                 <i onclick="deleteTask(this)" class="fas fa-trash-alt"></i>
             </span>
         </div>
@@ -56,6 +56,15 @@ let deleteTask = (e) => {
     e.parentElement.parentElement.remove();
 };
 
+let editTask = (e) => {
+let selectedTask = e.parentElement.parentElement;
+    textInput.value =  selectedTask.children[0].innerHTML;
+    dateInput.value =  selectedTask.children[1].innerHTML;
+    textarea.value =   selectedTask.children[2].innerHTML;
+
+    selectedTask.remove();
+
+};
 let resetForm = () => {
     textInput.value = "";
     dateInput.value = "";
